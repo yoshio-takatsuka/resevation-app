@@ -5,6 +5,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductListComponent } from './product-listings/product-listings.component';
 
 import { ProductComponent } from './product.component';
+import { ProductService } from './shared/product.service';
  
 const routes: Routes = [
   { path: 'products', component: ProductComponent,
@@ -27,7 +28,9 @@ const routes: Routes = [
     CommonModule
 
   ],
-  providers: [],
+  providers: [
+    ProductService
+  ],
   bootstrap: []
 })
 export class ProductModule { }
