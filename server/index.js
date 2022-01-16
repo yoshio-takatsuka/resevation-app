@@ -17,7 +17,7 @@ console.log('connect after')
 
 const app = express()
 
-app.use('/ap1/v1/products',productRoutes)
+app.use('/api/v1/products',productRoutes)
 
 
 // envで指定があればenvの値　なければ3001

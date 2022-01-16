@@ -8,7 +8,7 @@ export class ProductService {
     constructor(private http: HttpClient) { }
     getProducts():Observable<any> {
         // return products
-        return this.http.get('http://localhost:3001/ap1/v1/products')
+        return this.http.get('/api/v1/products')
     }
     getProductById(productId: number){
         return products[productId]
