@@ -28,6 +28,11 @@
         border-radius: 0;
     }
 
+    .card-img-top {     // No132 カードの丸み調整
+        border-top-left-radius: $border-radius-large;
+        border-top-right-radius: $border-radius-large;
+    }
+
     .card-footer{
         padding: 15px;
         background: transparent ;
