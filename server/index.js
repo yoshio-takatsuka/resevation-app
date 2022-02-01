@@ -1,45 +1,48 @@
-const express = require('express')
-const mongoose = require('mongoose');
-const config = require('./config/index') // indeの場合は不要 No118
-const FakeDb = require('./fake-db')
+const express = require('express') // 
+const mongoose = require('mongoose') // mongoDb
+const bodyParser = require('body-parser')
+const config = require('./config')
+const SampleDb = require('./sample-db')
+
+const productRoutes = require('./routes/products')
+const userRoutes = require('./routes/users')
+const path = require('path')
 console.log('config.DB_URI=>' + config.DB_URI);
-
-const productRoutes = require('./route/products')
-
-const path = require('path')  //No116
-
-console.log('process.env.NODE_ENV :>' + process.env.NODE_ENV )
-console.log('config.DB_URI :>' + config.DB_URI )
-
-mongoose.connect(config.DB_URI)
-.then(
-    () => {
-        console.log('connect OK');
-        if (process.env.NODE_ENV !== 'production') {  // 本番の時は消さない
-            const fakeDb = new FakeDb()
-            // fakeDb.initDb()
-        }
+console.log('process.env.NODE_ENV=>' + process.env.NODE_ENV)
+// DB 接続
+mongoose.connect(config.DB_URI, {
+  useNewUrlParser: true,    // Parser使用
+  useUnifiedTopology: true,
+  useCreateIndex: true
+}).then(
+  () => {
+    /* 接続に成功すればコンソールに表示 */
+    console.log('I am running! OK')
+    if(process.env.NODE_ENV !== 'production') {
+      const sampleDb = new SampleDb()
+      // sampleDb.initDb()
     }
+  }
 )
-console.log('connect after')
 
 const app = express()
+app.use(bodyParser.json())
 
-app.use('/api/v1/products',productRoutes)
+app.use('/api/v1/products', productRoutes)
+app.use('/api/v1/users', userRoutes)
 
-if (process.env.NODE_ENV === 'production') {
-    const appPath = path.join(__dirname,'..','dist','resevation-app')       // No116
-    app.use(express.static(appPath))                       // no166
-    app.get("*",function(req,res){                          // no166
-        res.sendFile(path.resolve(appPath,'index.html'))     // no166
-    })
+
+if(process.env.NODE_ENV === 'production') {
+  const appPath = path.join( __dirname, '..', 'dist', 'reservation-app')
+  app.use(express.static(appPath))
+  app.get("*", function(req, res) {
+    res.sendFile(path.resolve(appPath, 'index.html'))
+  })
 }
 
 
-// envで指定があればenvの値　なければ3001
-console.log('process.env.PORT:>' + process.env.PORT)
 const PORT = process.env.PORT || '3001'
 
-app.listen(PORT,function() {
-    console.log('I am running')
+app.listen(PORT, function() {
+  console.log('I am running! PORT:' + PORT)
 })

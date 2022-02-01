@@ -1,5 +1,5 @@
 .card{
-    border-radius: $border-radius-extreme;
+    border-radius: $border-radius-large;
     box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
     background-color: #FFFFFF;
     color: $card-black-color;
@@ -28,7 +28,7 @@
         border-radius: 0;
     }
 
-    .card-img-top {     // No132 カードの丸み調整
+    .card-img-top {
         border-top-left-radius: $border-radius-large;
         border-top-right-radius: $border-radius-large;
     }

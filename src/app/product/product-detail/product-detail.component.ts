@@ -8,27 +8,26 @@ import { ProductService } from '../shared/product.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  product: any;
+  product
 
-  constructor(private route: ActivatedRoute,
-    private prodctServise: ProductService
-    
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
     ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      //  this.product = this.prodctServise.getProductById(params.get("productId")!)
-      const productsObservable = this.prodctServise.getProductById(params.get("productId")!)
-      productsObservable.subscribe(
-        (data) =>{
-           this.product = data
+      // this.product = this.productService.getProductById(params.get('productId'))
+      const productObservable = this.productService.getProductById(params.get('productId'))
+      productObservable.subscribe(
+        (data) => {
+          this.product = data
         },
-        (err) =>{
+        (err) => {
 
         }
       )
     })
   }
-
 
 }

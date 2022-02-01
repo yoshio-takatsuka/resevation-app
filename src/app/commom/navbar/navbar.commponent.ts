@@ -1,22 +1,19 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-navbar',
-//   templateUrl: './navbar.commponent.html',
-//   styleUrls: ['./navbar.commponent.scss']
-// })
-// export class NavbarComponent {
-// }
-
-
+// ナビゲーション
+// bootstroap から作成　https://getbootstrap.com/docs/5.1/components/navbar/
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @Component({
+    // 構成するコンポーネントは以下
+    // selector そのコンポーネントが他のHTMLから参照されるときのタグ名になる。
+    //   上の例では、<app-xxx></app-xxx>と記述すれば、このコンポーネントが表示される。
+    // templateUrl 	そのコンポーネントを構成するHTMLのパスを記述する。
+    // styleUrls そのコンポーネントに適用するスタイルシートのパスを記述する。
     selector: 'app-navbar',
     templateUrl: './navbar.commponent.html',
     styleUrls: ['./navbar.commponent.scss']
 })
+//  export class以下でそのコンポーネントのクラスを定義
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
@@ -24,7 +21,8 @@ export class NavbarComponent implements OnInit {
     constructor(public location: Location, private element : ElementRef) {
         this.sidebarVisible = false;
     }
-
+//   ngOnInit: ngOnInitはcomponent作成後に呼び出されます
+//    参考：　　constructorは、component作成途中で実行
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];

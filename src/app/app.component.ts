@@ -1,13 +1,11 @@
 import { Component, OnInit, Inject, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-
+import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators'
 import { LocationStrategy, PlatformLocation, Location, DOCUMENT } from '@angular/common';
-import { Subscription } from 'rxjs';
-import { NavbarComponent } from './commom/navbar/navbar.commponent';
+import { NavbarComponent } from './common/navbar/navbar.component';
 
- 
- 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,21 +13,23 @@ import { NavbarComponent } from './commom/navbar/navbar.commponent';
 })
 export class AppComponent implements OnInit {
   private _router: Subscription;
-  @ViewChild(NavbarComponent ) navbar: NavbarComponent;
- 
+  @ViewChild(NavbarComponent) navbar: NavbarComponent;
+
   constructor( private renderer : Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {}
   ngOnInit() {
+      // 
       var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
-      this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
+      this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
           if (window.outerWidth > 991) {
               window.document.children[0].scrollTop = 0;
           }else{
-              window.document.activeElement!.scrollTop = 0;
+              window.document.activeElement.scrollTop = 0;
           }
           this.navbar.sidebarClose();
       });
       this.renderer.listen('window', 'scroll', (event) => {
     const number = window.scrollY;
+    // スクロールを下げたらナブバーを消す。
     if (number > 150 || window.pageYOffset > 150) {
         // add logic
         navbar.classList.remove('navbar-transparent');
@@ -46,12 +46,12 @@ export class AppComponent implements OnInit {
           var rv = ua.indexOf('rv:');
           var version = parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
       }
-      if (version!) {
+      if (version) {
           var body = document.getElementsByTagName('body')[0];
           body.classList.add('ie-background');
- 
+
       }
- 
+
   }
   removeFooter() {
       var titlee = this.location.prepareExternalUrl(this.location.path());

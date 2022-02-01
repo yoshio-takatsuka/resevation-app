@@ -1,24 +1,24 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './commom/navbar/navbar.commponent';
-import { ProductComponent } from './product/product.component';
-import { ProductModule } from './product/product.module';
+import { NavbarComponent } from './common/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+
+
+// 全体構成
+//  AppComponent
+//  NavbarComponent
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-  
-  
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
