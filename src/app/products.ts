@@ -4,7 +4,7 @@ export const products = [
     name: 'Phone XL',
     price: 799,
     description: 'A large phone with one of the best screens',
-    heding1: 'サンプルテキスト１',
+    heding1: 'サンプルテキスト１1',
     heding2: 'サンプルテキスト２',
     heding3: 'サンプルテキスト３',
     headingtext1: 'サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト　サンプルテキスト',
