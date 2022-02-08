@@ -1,3 +1,5 @@
+// サーバ側起動
+// express 
 const express = require('express') // 
 const mongoose = require('mongoose') // mongoDb
 const bodyParser = require('body-parser')
@@ -42,7 +44,7 @@ if(process.env.NODE_ENV === 'production') {
 
 
 const PORT = process.env.PORT || '3001'
-
+// 
 app.listen(PORT, function() {
   console.log('I am running! PORT:' + PORT)
 })

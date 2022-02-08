@@ -9,6 +9,7 @@ import { AuthService } from './shared/auth.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/token.interceptor';
 
+// auth
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },

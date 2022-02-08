@@ -3,8 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductModule } from './product/product.module';
 import { AuthModule } from './auth/auth.module';
 
-
-const routes: Routes = [
+// メインrouting
+//  ProductModule と　AuthModuleを参照
+//  ProductModuleはproduct.module.tsに記載
+//  AuthModuleはauth.module.tsに記載
+const routes: Routes = [   
+  // 未入力の場合は productsとしてルーティング
   { path: '', redirectTo: 'products', pathMatch: 'full' },
 ];
 
