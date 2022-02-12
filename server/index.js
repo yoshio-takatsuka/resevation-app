@@ -7,6 +7,7 @@ const config = require('./config')
 const SampleDb = require('./sample-db')
 
 const productRoutes = require('./routes/products')
+const dialyRoutes = require('./routes/diaries')
 const userRoutes = require('./routes/users')
 const path = require('path')
 console.log('config.DB_URI=>' + config.DB_URI);
@@ -31,6 +32,7 @@ const app = express()
 app.use(bodyParser.json())
 
 app.use('/api/v1/products', productRoutes)
+app.use('/api/v1/diaries', dialyRoutes)
 app.use('/api/v1/users', userRoutes)
 
 

@@ -40,7 +40,7 @@ export class DiaryService {
   }
 
   register(userData: any): Observable<any> {
-    return this.http.post('/api/v1/users/register' , userData)
+    return this.http.post('/api/v1/diaries/register' , userData)
   }
 
   login(userData: any): Observable<any> {

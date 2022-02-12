@@ -17,31 +17,25 @@
                     <div class="card" style="width: 50rem;">
                      <!-- <div class="card card-diary" style="width: 30rem;"> -->
                         <h3 class="title">家　計　簿</h3>
-                        <!--  アイコン削除 -->
-<!--                         <!-- <div class="social-line text-center">
-                            <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a href="#pablo" class="btn btn-neutral btn-google btn-just-icon">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
-                            <a href="#pablo" class="btn btn-neutral btn-twitter btn-just-icon">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </div> --> -->
+
                         <form class="register-form" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-                            <label>日付</label>
-                            <div class="input-group form-group-no-border">
-                                <input 
-                                    ngModel 
-                                    name="p-date" 
-                                    type="date" 
-                                    class="form-control" 
-                                    pattern="^(?!([02468][1235679]|[13579][01345789])000229)(([0-9]{4}(01|03|05|07|08|10|12)(0[1-9]|[12][0-9]|3[01]))|([0-9]{4}(04|06|09|11)(0[1-9]|[12][0-9]|30))|([0-9]{4}02(0[1-9]|1[0-9]|2[0-8]))|([0-9]{2}([02468][048]|[13579][26])0229))$"
-                                    placeholder="日付"
-                                    required 
-                                />
-                            </div>
+                            <div>
+                                <label>日付</label>
+                                <div class="input-group form-group-no-border">
+                                    <input 
+                                        ngModel 
+                                        name="p_date" 
+                                        type="date" 
+                                        class="form-control" 
+                                        pattern="^(?!([02468][1235679]|[13579][01345789])000229)(([0-9]{4}(01|03|05|07|08|10|12)(0[1-9]|[12][0-9]|3[01]))|([0-9]{4}(04|06|09|11)(0[1-9]|[12][0-9]|30))|([0-9]{4}02(0[1-9]|1[0-9]|2[0-8]))|([0-9]{2}([02468][048]|[13579][26])0229))$"
+                                        placeholder="日付"
+                                        required 
+                                    />
+                                </div>
+                                <button  class="btn btn-danger btn-block btn-round"
+                                type="submit">検索</button>
+                            </div>    
+
 
                             <label>予定情報</label>
                             <div class="input-group ">
@@ -126,15 +120,30 @@
 
 
                             <!--  -->
-                            <label>出金簿</label>
+                            <!-- <label>出金簿</label>
                             <table class="table">
                                 <thead>
                                 <tr><th>時刻</th><th>科目</th><th>詳細</th><th>その他</th><th>支払方法</th><th>金額</th></tr>
                                 </thead>
                                 <tbody>
                                 <tr >
-                                <!-- <tr *ngFor="let member of members"> -->
-                                    <td>19:30</td>
+                                <tr *ngFor="let kekeibo of kakeibos">
+                                    <td>
+                                        <div class="col">
+                                            <div class="input-group form-group-no-border">
+                                                <input 
+                                                    ngModel 
+                                                    name=""
+                                                    type="time" 
+                                                    class="form-control" 
+                                                    placeholder="勤務終了"
+                                                    required 
+                                                />
+                                            </div>
+        
+                                        </div>
+        
+                                    </td>
                                     <td>1</td>
                                     <td>1</td>
                                     <td>1</td>
@@ -142,26 +151,26 @@
                                     <td>1</td>
                                 </tr>
                                 </tbody>
-                            </table>
+                            </table> -->
                             <!--  -->
 
                             <!--  -->
-                            <label>スキル簿</label>
+                            <!-- <label>スキル簿</label>
                             <table class="table">
                                 <thead>
                                 <tr><th>時刻</th><th>区分</th><th>内容</th></tr>
                                 </thead>
                                 <tbody>
-                                <tr >
+                                <tr > -->
                                 <!-- <tr *ngFor="let member of members"> -->
-                                    <td>19:30</td>
+                                    <!-- <td>19:30</td>
                                     <td>1</td>
                                     <td>1</td>
                                 </tr>
                                 </tbody>
-                            </table>
-                            <!--  -->
-                           <button [disabled]="!registerForm.valid" class="btn btn-danger btn-block btn-round"
+                            </table> -->
+                            <!-- 一旦コメント  -->
+                           <button [disabled]=false class="btn btn-danger btn-block btn-round"
                                 type="submit">登録</button>
                         </form>
                         <br />

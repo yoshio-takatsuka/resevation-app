@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 // const ObjectId = Schema.ObjectId;
  
-const ProductSchema = new Schema({
+const DiarySchema = new Schema({
   // author: ObjectId,
   p_date: String,          //
   yotei_data: String,      // 予定情報
@@ -15,4 +15,4 @@ const ProductSchema = new Schema({
   diary_data: String,      // 日記
 })
 
-module.exports = mongoose.model('Product', ProductSchema)
+module.exports = mongoose.model('Diary', DiarySchema)

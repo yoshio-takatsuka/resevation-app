@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   errors: any = []
+  kakeibos: any = []
 
   constructor(
     private diaryService: DiaryService,
@@ -19,15 +20,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit() { }
 
   register(registerForm) {
-    // this.authService.register(registerForm.value).subscribe(
-    //   (result) => {
-    //     console.log("Success!")
-    //     this.router.navigate(['/login'])
-    //   },
-    //   (err: HttpErrorResponse) => {
-    //     console.error(err)
-    //     this.errors = err.error.errors
-    //   }
-    // )
+    this.diaryService.register(registerForm.value).subscribe(
+      (result) => {
+        console.log("Success!")
+        // this.router.navigate(['/login'])
+      },
+      (err: HttpErrorResponse) => {
+        console.error(err)
+        this.errors = err.error.errors
+      }
+    )
   }
 }
