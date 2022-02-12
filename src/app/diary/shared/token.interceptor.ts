@@ -5,13 +5,13 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { AuthService } from './auth.service';
+import { DiaryService } from './diary.service';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(public diaryService: AuthService) {}
+  constructor(public diaryService: DiaryService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.diaryService.getToken()

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductModule } from './product/product.module';
 import { AuthModule } from './auth/auth.module';
+import { DiaryModule } from './diary/diary.module';
+
 
 // メインrouting
 //  ProductModule と　AuthModuleを参照
@@ -16,7 +18,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     ProductModule,
-    AuthModule
+    AuthModule,
+    DiaryModule
   ],
   exports: [RouterModule]
 })
