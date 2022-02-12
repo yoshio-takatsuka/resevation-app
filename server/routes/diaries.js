@@ -1,0 +1,47 @@
+const express = require('express')
+const router = express.Router()
+const Diary = require('../model/diary')
+const DiaryCtrl = require('../controllers/user')
+
+
+router.post('/register', function(req, res) {
+  const { p_date, yotei_data, wake_time, sleep_time, bz_startTime,bz_endTime,diary_data} = req.body
+  
+  /* 上と下は同じ意味
+  const username = req.body.username
+  const email = req.body.email
+  const password = req.body.password
+  const confirmPassword = req.body.confirmPassword
+  */
+
+  if(!p_date) {
+    return res.status(422).send({errors: [{title: 'Input error', detail: '日付を入力してください！'}]})
+  }
+  Diary.findOne({p_date}, function(err, foundDiary) {
+    if(err) {
+      return res.status(422).send({errors: [{title: 'User error', detail: 'Someting went wrong!'}]})
+    }
+    if(foundDiary) {
+      // データがあれば削除し追加
+      // Updateでも一発でできそう
+      //  参考Url https://qiita.com/takehilo/items/4b89f8ee432b0a06c691
+      foundDiary.remove({ "p_date": p_date }, function(err) {
+          if (err) {
+              return res.status(422).send({errors: [{title: 'User error', detail: "diary can't delete!"}]})
+          }
+      },false,true);
+    }
+    // データ追加
+    const diary = new Diary({p_date, yotei_data, wake_time, sleep_time, bz_startTime,bz_endTime,diary_data})
+    diary.save(function(err) {
+      if(err) {
+        return res.status(422).send({errors: [{title: 'User error', detail: 'Someting went wrong!'}]})
+      }
+      return res.json({"registerd": true})
+    })
+
+  })
+})
+
+
+module.exports = router
