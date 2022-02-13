@@ -42,6 +42,12 @@ export class DiaryService {
   register(userData: any): Observable<any> {
     return this.http.post('/api/v1/diaries/register' , userData)
   }
+ 
+
+  getDairy(userData: "p_date"): Observable<any> {
+    return this.http.get('/api/v1/diaries/get')
+  }
+
 
   login(userData: any): Observable<any> {
     return this.http.post('/api/v1/users/login' , userData).pipe(map(

@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   errors: any = []
-  kakeibos: any = []
+  diaries: any = []    // 日記情報
+  kakeibos: any = []   // 家計簿情報
+  skills: any = []     // スキル情報
 
   constructor(
     private diaryService: DiaryService,
@@ -19,6 +21,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() { }
 
+  // formの日記、家計簿、スキル情報を更新する 
   register(registerForm) {
     this.diaryService.register(registerForm.value).subscribe(
       (result) => {
@@ -31,4 +34,42 @@ export class RegisterComponent implements OnInit {
       }
     )
   }
+  // 該当日付の日記、家計簿、スキル情報を取得してくる 
+  Serch(registerForm) {
+    debugger
+    this.diaryService.getDairy(registerForm.value.p_date).subscribe(
+      (result) => {
+        this.diaries = result.daiaies
+        this.kakeibos = result.kakeibos
+        this.skills = result.skills
+
+        console.log("Success!")
+        // this.router.navigate(['/login'])
+      },
+      (err: HttpErrorResponse) => {
+        console.error(err)
+        this.errors = err.error.errors
+      }
+    )
+  }
+
+
 }
+
+
+// const productsObservable = this.productService.getProducts()
+// productsObservable.subscribe(
+//   (data) => { 
+//     this.products = data
+//   },
+//   (err) => { console.error('次のエラーが発生しました: ' + err) }
+// )
+// }
+
+
+
+
+
+
+
+

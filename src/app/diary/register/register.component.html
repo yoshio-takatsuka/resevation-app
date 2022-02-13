@@ -14,7 +14,7 @@
 
                 <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
                     <!-- ↓枠定義 card-diary　-->
-                    <div class="card" style="width: 50rem;">
+                    <div class="card" style="width: 40rem;">
                      <!-- <div class="card card-diary" style="width: 30rem;"> -->
                         <h3 class="title">家　計　簿</h3>
 
@@ -32,7 +32,7 @@
                                         required 
                                     />
                                 </div>
-                                <button  class="btn btn-danger btn-block btn-round"
+                                <button  class="btn btn-danger btn-block btn-round" (click)="Serch(registerForm)"
                                 type="submit">検索</button>
                             </div>    
 
@@ -120,55 +120,117 @@
 
 
                             <!--  -->
-                            <!-- <label>出金簿</label>
+                            <label>出金簿</label>
                             <table class="table">
                                 <thead>
                                 <tr><th>時刻</th><th>科目</th><th>詳細</th><th>その他</th><th>支払方法</th><th>金額</th></tr>
                                 </thead>
                                 <tbody>
-                                <tr >
                                 <tr *ngFor="let kekeibo of kakeibos">
                                     <td>
                                         <div class="col">
                                             <div class="input-group form-group-no-border">
                                                 <input 
                                                     ngModel 
-                                                    name=""
+                                                    name="kakebo_time"
                                                     type="time" 
                                                     class="form-control" 
-                                                    placeholder="勤務終了"
+                                                    placeholder="家計簿時刻"
                                                     required 
                                                 />
                                             </div>
-        
                                         </div>
-        
                                     </td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
+                                    <td>
+                                        <div class="col">
+                                            <div class="input-group form-group-no-border">
+                                                <input 
+                                                    ngModel 
+                                                    name="kakebo_kamoku"
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    placeholder="家計簿科目"
+                                                    required 
+                                                />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col">
+                                            <div class="input-group form-group-no-border">
+                                                <input 
+                                                    ngModel 
+                                                    name="kakebo_detail"
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    placeholder="家計簿詳細"
+                                                    required 
+                                                />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col">
+                                            <div class="input-group form-group-no-border">
+                                                <input 
+                                                    ngModel 
+                                                    name="kakebo_etc"
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    placeholder="家計簿その他"
+                                                    required 
+                                                />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col">
+                                            <div class="input-group form-group-no-border">
+                                                <input 
+                                                    ngModel 
+                                                    name="kakebo_payKbn"
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    placeholder="家計簿支払区分"
+                                                    required 
+                                                />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col">
+                                            <div class="input-group form-group-no-border">
+                                                <input 
+                                                    ngModel 
+                                                    name="kakebo_kingaku"
+                                                    type="number" 
+                                                    class="form-control" 
+                                                    placeholder="家計簿金額"
+                                                    required 
+                                                />
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 </tbody>
-                            </table> -->
+                            </table>
                             <!--  -->
 
                             <!--  -->
-                            <!-- <label>スキル簿</label>
+                            <label>スキル簿</label>
                             <table class="table">
                                 <thead>
                                 <tr><th>時刻</th><th>区分</th><th>内容</th></tr>
                                 </thead>
                                 <tbody>
-                                <tr > -->
+                                <tr >
                                 <!-- <tr *ngFor="let member of members"> -->
-                                    <!-- <td>19:30</td>
+                                    <td>19:30</td>
                                     <td>1</td>
                                     <td>1</td>
                                 </tr>
                                 </tbody>
-                            </table> -->
+                            </table>
                             <!-- 一旦コメント  -->
                            <button [disabled]=false class="btn btn-danger btn-block btn-round"
                                 type="submit">登録</button>
