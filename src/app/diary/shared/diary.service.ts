@@ -44,8 +44,8 @@ export class DiaryService {
   }
  
 
-  getDairy(userData: "p_date"): Observable<any> {
-    return this.http.get('/api/v1/diaries/get')
+  getDairy(p_date: string): Observable<any> {
+    return this.http.get('/api/v1/diaries/' + p_date)
   }
 
 

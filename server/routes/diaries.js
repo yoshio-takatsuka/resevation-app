@@ -1,11 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const Diary = require('../model/diary')
+const Diary = require('../model/diary')     // 日記帳モデル
+const Kakeibo = require('../model/kakeibo')     // 家計簿モデル
+const Skill = require('../model/skill')     // スキルモデル
 const DiaryCtrl = require('../controllers/user')
 
 
 
-
+// diaries/serach/xxxxx  検索処理 xxxxxは日付（初期表示はなし）
+// diaries/register      登録処理
 
 
 
@@ -16,7 +19,7 @@ router.get('/:p_date',  function (req, res) {
 
   const p_date = req.params.p_date
   // 日記情報
-  Diary.find(p_date, function (err, foundDiary) {
+  Diary.find({p_date: p_date}, function (err, foundDiary) {
     
     if (err) {
       return res.status(422).send({ errors: [{ title: 'Diary error', detail: 'Diary not found!' }] })
@@ -25,11 +28,18 @@ router.get('/:p_date',  function (req, res) {
     Diaryinf = res.json(foundDiary[0])
   })
   // 家計簿情報
-  Kakeibo.find(p_date, function (err, foundKakeibo) {
+  Kakeibo.find({p_date: p_date}, function (err, foundKakeibo) {
+    if (err) {
+      console.log("kakeibo db error->" + { errors: [{ title: 'Diary error', detail: 'Diary not found!' }] })
+    }
+  
     Kakeiboinf = res.json(foundKakeibo)
   })
   // スキル情報
-  Skill.find(p_date, function (err, foundSkill) {
+  Skill.find({p_date: p_date}, function (err, foundSkill) {
+    if (err) {
+      console.log("Skill db error->" + { errors: [{ title: 'Diary error', detail: 'Diary not found!' }] })
+    }
     Skillinf = res.json(foundKakeibo)
   })
 })
